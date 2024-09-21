@@ -1,4 +1,4 @@
-// src/app/components/product-detail/product-detail.component.ts
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';

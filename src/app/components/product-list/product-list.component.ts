@@ -1,8 +1,7 @@
-// src/app/components/product-list/product-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.module';
-import { CartService } from '../../services/cart.service'; // Ensure CartService is imported
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -25,7 +24,7 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-  handleAddToCart(product: Product): void { // Correct parameter naming and syntax
+  handleAddToCart(product: Product): void {
     this.cartService.addToCart(product);
     console.log('Product added to cart:', product);
   }

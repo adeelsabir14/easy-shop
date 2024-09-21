@@ -15,7 +15,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';  // Import FormsModule
+import { FormsModule } from '@angular/forms';  
 import { RouterModule } from '@angular/router';
 
 

@@ -1,4 +1,4 @@
-// src/app/services/product.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
@@ -38,12 +38,10 @@ export class ProductService {
   deleteProduct(productId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${productId}`);
   }
-  // Additional methods: addProduct, deleteProduct, etc.
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // Client-side
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side

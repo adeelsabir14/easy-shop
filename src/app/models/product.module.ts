@@ -10,8 +10,6 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ProductModule {}
-// src/app/models/product.model.ts
-// src/app/models/product.model.ts
 export interface Product {
   id: number;
   title: string;
