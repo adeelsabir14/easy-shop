@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  // BehaviorSubject to track the logged-in state
   private loggedIn = new BehaviorSubject<boolean>(false);
+
+  // Public observable that components can subscribe to
   isLoggedIn = this.loggedIn.asObservable();
 
-  login(username: string, password: string): boolean {
-    // Simple authentication logic (replace with real auth)
-    if (username === 'admin' && password === 'password') {
-      this.loggedIn.next(true);
-      return true;
-    }
-    return false;
+  // Method to log the user in and emit the new state
+  login(): void {
+    this.loggedIn.next(true);
   }
 
-  logout() {
+  // Method to log the user out and emit the new state
+  logout(): void {
     this.loggedIn.next(false);
   }
+
 }

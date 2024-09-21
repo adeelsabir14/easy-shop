@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from '../services/auth.service'; // Mocked AuthService
-import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
 describe('AuthGuard', () => {
@@ -11,49 +10,43 @@ describe('AuthGuard', () => {
   let router: Router;
 
   beforeEach(() => {
-    // Mocking AuthService
-    const authServiceMock = {
-      isLoggedIn: jest.fn()
-    };
+    const routerSpy = { navigate: jasmine.createSpy('navigate') };
 
-    // Initializing test environment
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([])], // No routes needed for testing
       providers: [
         AuthGuard,
-        { provide: AuthService, useValue: authServiceMock }
+        { provide: AuthService, useValue: { isLoggedIn: () => of(false) } },  // Default mock for auth service
+        { provide: Router, useValue: routerSpy }
       ]
     });
 
-    // Inject dependencies
     authGuard = TestBed.inject(AuthGuard);
     authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(authGuard).toBeTruthy();
   });
 
-  it('should allow the route if the user is logged in', () => {
-    // Mock the isLoggedIn method to return true
-    authService.isLoggedIn.mockReturnValue(of(true));
+  it('should allow access if user is logged in', (done: DoneFn) => {
+    // Simulate the user being logged in
+    spyOn(authService, 'isLoggedIn').and.returnValue(of(true));
 
-    authGuard.canActivate().subscribe((canActivate) => {
-      expect(canActivate).toBe(true);
+    authGuard.canActivate().subscribe(isAllowed => {
+      expect(isAllowed).toBeTrue();
+      done();
     });
   });
 
-  it('should redirect to the login page if the user is not logged in', () => {
-    // Spy on the router's navigate method
-    const navigateSpy = jest.spyOn(router, 'navigate');
+  it('should deny access and navigate to login if user is not logged in', (done: DoneFn) => {
+    // Simulate the user not being logged in
+    spyOn(authService, 'isLoggedIn').and.returnValue(of(false));
 
-    // Mock the isLoggedIn method to return false
-    authService.isLoggedIn.mockReturnValue(of(false));
-
-    authGuard.canActivate().subscribe((canActivate) => {
-      expect(canActivate).toBe(false);
-      expect(navigateSpy).toHaveBeenCalledWith(['/login']);
+    authGuard.canActivate().subscribe(isAllowed => {
+      expect(isAllowed).toBeFalse();
+      expect(router.navigate).toHaveBeenCalledWith(['/login']);
+      done();
     });
   });
 });
