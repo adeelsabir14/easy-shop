@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2>Admin Dashboard</h2>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <h3 *ngIf="selectedProduct">Edit Product</h3>
+  <form *ngIf="selectedProduct" (ngSubmit)="updateProduct()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="selectedProduct.title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" class="form-control" [(ngModel)]="selectedProduct.price" name="price" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="selectedProduct.description" name="description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input type="text" id="category" class="form-control" [(ngModel)]="selectedProduct.category" name="category" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input type="text" id="image" class="form-control" [(ngModel)]="selectedProduct.image" name="image" required>
+    </div>
+    <button type="submit" class="btn btn-success">Update Product</button>
+    <button type="button" class="btn btn-secondary" (click)="selectedProduct = null">Cancel</button>
+  </form>
+
+  <h3>Product List</h3>
+  <ul class="list-group">
+    <li *ngFor="let product of products" class="list-group-item">
+      {{ product.title }} - {{ product.price | currency }}
+      <button class="btn btn-warning btn-sm float-right" (click)="editProduct(product)">Edit</button>
+      <button class="btn btn-danger btn-sm float-right mr-2" (click)="deleteProduct(product.id)">Delete</button>
+    </li>
+  </ul>
+</div>

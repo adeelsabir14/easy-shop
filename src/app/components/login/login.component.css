@@ -1,0 +1,9 @@
+
+.container {
+  max-width: 400px;
+  margin-top: 50px;
+}
+
+.invalid-feedback {
+  display: block;
+}

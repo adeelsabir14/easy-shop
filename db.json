@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Product 1",
+      "price": 29.99,
+      "description": "Description for Product 1",
+      "category": "Category A",
+      "image": "https://via.placeholder.com/150",
+      "rating": {
+        "rate": 4.5,
+        "count": 120
+      }
+    },
+    {
+      "id": 2,
+      "title": "Product 2",
+      "price": 49.99,
+      "description": "Description for Product 2",
+      "category": "Category B",
+      "image": "https://via.placeholder.com/150",
+      "rating": {
+        "rate": 4.0,
+        "count": 80
+      }
+    }
+  ]
+}

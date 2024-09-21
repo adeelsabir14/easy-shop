@@ -1,0 +1,16 @@
+
+<div class="container mt-4">
+  <h2 *ngIf="product">{{ product.title }}</h2>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="product">
+    <img [src]="product.image" alt="{{ product.title }}" class="img-fluid" />
+    <p><strong>Price:</strong> {{ product.price | currency }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Rating:</strong> {{ product.rating.rate }} ({{ product.rating.count }} votes)</p>
+    <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+  </div>
+
+  <a routerLink="/home" class="btn btn-secondary mt-4">Back to Products</a>
+</div>

@@ -1,0 +1,12 @@
+<!-- src/app/components/product-list/product-list.component.html -->
+<div class="container mt-4">
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <app-product-card
+        [product]="product"
+        (addToCart)="handleAddToCart($event)">
+      </app-product-card>
+    </div>
+  </div>
+</div>
