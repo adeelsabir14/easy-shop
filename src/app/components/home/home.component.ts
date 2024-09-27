@@ -23,4 +23,7 @@ export class HomeComponent implements OnInit {
       (err) => this.error = err
     );
   }
+
+
+
 }

@@ -1,10 +1,18 @@
 
 <div class="container mt-4">
   <h2 *ngIf="product">{{ product.title }}</h2>
+  <br>
+  <br>
+  <br>
+  <br>
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
   <div *ngIf="product">
     <img [src]="product.image" alt="{{ product.title }}" class="img-fluid" />
+    <br>
+    <br>
+    <br>
+    <br>
     <p><strong>Price:</strong> {{ product.price | currency }}</p>
     <p><strong>Description:</strong> {{ product.description }}</p>
     <p><strong>Category:</strong> {{ product.category }}</p>

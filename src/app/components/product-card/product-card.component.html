@@ -4,9 +4,11 @@
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.description | truncate:100 }}</p>
+
   </div>
   <div class="card-footer">
     <small class="text-muted">{{ product.price | currency }}</small>
     <a [routerLink]="['/products', product.id]" class="btn btn-primary btn-sm float-right">View</a>
+    <button class="btn btn-primary" (click)="onAddToCart()">Add to Cart</button>
   </div>
 </div>
