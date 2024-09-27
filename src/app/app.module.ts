@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';  
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router';
     AdminComponent,
     ProductCardComponent,
     HighlightDirective,
-    TruncatePipe
+    TruncatePipe,
+    FooterComponent
     ],
   imports: [
     HttpClientModule,
