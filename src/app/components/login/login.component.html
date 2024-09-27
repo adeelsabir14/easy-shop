@@ -1,10 +1,10 @@
 
-<div class="container mt-4">
+<div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
   <h2>Login</h2>
   <div *ngIf="error" class="alert alert-danger">
     {{ error }}
   </div>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form class="shadow-lg p-3 mb-5 bg-body rounded" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" class="form-control" formControlName="username">

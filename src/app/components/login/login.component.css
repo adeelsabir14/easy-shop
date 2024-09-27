@@ -1,7 +1,12 @@
 
 .container {
-  max-width: 400px;
-  margin-top: 50px;
+  display: block;
+  justify-content: center;
+  max-width: 618px;
+  margin-top: 500px;
+  left: 10%;
+  top: 20%;
+
 }
 
 .invalid-feedback {
