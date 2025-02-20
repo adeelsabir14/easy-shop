@@ -1,41 +1,19 @@
 
-<div class="container mt-4">
-  <h1>Welcome to Our Store</h1>
-  <div *ngIf="error" class="alert alert-danger">
-    {{ error }}
-  </div>
-  <div class="row">
-    <!-- <div class="col-md-4" *ngFor="let product of products">
-      <app-product-card [product]="product"></app-product-card>
-    </div> -->
 
 
 
-
-      <div class="container">
-        <h1>Email Us</h1>
-        <form action="#" method="post">
-          <label for="name">Full Name:</label>
-          <input type="text" id="name" name="name" required placeholder="Your full name">
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required placeholder="Your email address">
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Your message here"></textarea>
-
-          <button type="submit">Send Message</button>
-        </form>
-
-        <div class="contact-info">
-          <p>Email: m.abdelrahman&#64;mohamedabdelrahman.com</p>
-          <p>Phone: +966-553346876</p>
-          <p>Address: Riyadh, KSA</p>
+    <div class="container text-center mt-4">
+      <h1>Welcome to Our Store</h1>
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+          <app-product-card
+            [product]="product"
+            (addToCart)="handleAddToCart($event)">
+          </app-product-card>
         </div>
       </div>
+    </div>
+    
+      
 
-
-
-
-  </div>
-</div>
